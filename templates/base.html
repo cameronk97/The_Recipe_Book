@@ -23,6 +23,27 @@
                 <li>
                     <a href="#">About</a>
                 </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="#">Profile</a>
+                </li>
+                <li>
+                    <a href="#">My Saved Recipes</a>
+                </li>
+                <li>
+                    <a href="#">Post a Recipe</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="#">Sign Up</a>
+                </li>
+                <li>
+                    <a href="#">Login</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
