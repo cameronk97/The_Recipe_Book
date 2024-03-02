@@ -4,7 +4,7 @@ from cloudinary.models import CloudinaryField
 from django.core.validators import MinLengthValidator
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(blank=True)
     ingredients = models.TextField(validators=[MinLengthValidator(5)])
