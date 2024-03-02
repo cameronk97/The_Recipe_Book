@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.core.validators import MinLengthValidator
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     description = models.TextField(blank=True)
-    ingredients = models.TextField
-    instructions = models.TextField
+    ingredients = models.TextField(validators=[MinLengthValidator(5)])
+    instructions = models.TextField(validators=[MinLengthValidator(5)])
     image = CloudinaryField('image', default='placeholder')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipe_posts")
     created_on = models.DateTimeField(auto_now=True)
