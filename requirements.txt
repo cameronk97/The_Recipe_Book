@@ -6,9 +6,10 @@ defusedxml==0.7.1
 dj-database-url==0.5.0
 dj3-cloudinary-storage==0.0.6
 Django==3.2.24
-django-allauth==0.61.1
+django-allauth==0.57.0
 gunicorn==21.2.0
 oauthlib==3.2.2
+packaging==23.2
 psycopg2==2.9.9
 pycparser==2.21
 PyJWT==2.8.0
