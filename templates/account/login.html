@@ -2,22 +2,32 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock head_title %}
+{% block head_title %}{% trans "Log In" %}{% endblock head_title %}
 
 {% block content %}
 
-<h1>{% trans "Sign In" %}</h1>
-
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
+<div class="bg-image bg-center" style="background-image: url('https://res.cloudinary.com/dksu5snru/image/upload/v1714761338/The%20Recipe%20Book/pexels-lena-khrupina-2683373_jzeikw.jpg'); background-size: cover;">
+  <div class="overlay-container d-flex align-items-center justify-content-center">
+    <div class="container">
+      <div id="login-form-row" class="row align-items-center justify-content-center vh-100">
+        <div class="col-md-8 offset-md-2">
+          <div class="form-container bg-white p-5 m-5 d-flex flex-column align-items-center">
+          <h1 class="text-center">{% trans "Log In" %}</h1>
+          <p class="text-center">{% blocktrans %}Log in to your account, or If you have not created an account yet, then please
+          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button class="primaryAction" type="submit">{% trans "Log in" %}</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
