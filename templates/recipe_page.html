@@ -1,1 +1,38 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+<div class="masthead container-fluid">
+  <div class="row">
+    <div class="col-md-6 masthead-text">
+      <h1 class="recipe-title"> {{ recipe.title }} </h1>
+      <!--save button heart icon goes here-->
+      <!-- Recipe author goes before the | the recipe's created date goes after -->
+      <p class="recipe-info"> | </p>
+      <p class="recipe-description">
+        {{ recipe.description }}
+      </p>
+
+    </div>
+    <div class="col-md-6 masthead-image">
+      {% if "placeholder" in recipe.image.url %}
+      <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+      {% else %}
+      <img src=" {{ recipe.image.url }}" width="100%">
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="recipe-content container-fluid">
+    <div class="row">
+      <div class="col-md-6 ingredients">
+  
+      </div>
+      <div class="col-md-6 instructions">
+
+      </div>
+    </div>
+</div>
+
+{% endblock content %}
