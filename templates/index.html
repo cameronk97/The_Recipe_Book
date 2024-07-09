@@ -6,7 +6,7 @@
     <div class="row">
 
         <!-- Recipes -->
-        <div class="col-12 mt-3 left">
+        <div class="col-12 mt-3">
             <div class="row">
                 {% for recipe in recipe_list %}
                 <div class="col-md-4">
@@ -15,7 +15,7 @@
                             <div class="image-container">
                                 {% if "placeholder" in recipe.image.url %}
                                 <img class="card-img-top"
-                                    src="">
+                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                                 {% else %}
                                 <img class="card-img-top" src=" {{ recipe.image.url }}">
                                 {% endif %}
@@ -23,13 +23,13 @@
                                     <p class="author">By: {{ recipe.author }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="recipe-link">
+                            <a href="{% url 'recipe_page' recipe.slug %}" class="recipe-link">
                                 <h2 class="card-title">{{ recipe.title }}</h2>
-                                <p class="card-text">{{ recipe.description }}</p>
                             </a>
+                            <p class="card-text">{{ recipe.description }}</p>
                             <hr />
                             <p class="card-text text-muted h6">{{ recipe.created_on}} <i class="fa-solid fa-heart"></i>
-                                {{ recipe.saves }}</p>
+                                {{ recipe.number_of_saves }}</p>
                         </div>
                     </div>
                 </div>
