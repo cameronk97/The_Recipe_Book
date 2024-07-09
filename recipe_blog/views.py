@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.views import generic
+from django.shortcuts import render, get_object_or_404, reverse
+from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Recipe
 
 def home(request):
@@ -8,6 +9,42 @@ def home(request):
 
 def recipe_page(request):
     return render(request, 'recipe_page.html')
+
+class RecipePage(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Recipe.objects.all()
+        recipe = get_object_or_404(queryset, slug=slug)
+        saved = False
+        if recipe.saves.filter(id=self.request.user.id).exists():
+            saved = True
+
+        return render(
+            request,
+            "recipe_page.html",
+            {
+                "recipe": recipe,
+                "saved": saved,
+            },
+        )
+    
+    def recipe(self, request, slug, *args, **kwargs):
+
+        queryset = Recipe.objects.all()
+        recipe = get_object_or_404(queryset, slug=slug)
+        saved = False
+        if recipe.saves.filter(id=self.request.user.id).exists():
+            saved = True
+
+
+        return render(
+            request,
+            "recipe_page.html",
+            {
+                "recipe": recipe,
+                "saved": saved
+            },
+        )
 
 
 def post_recipe(request):
@@ -27,6 +64,6 @@ def saved_recipes(request):
 
 class RecipeList(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.order_by('-created_on')
-    template_name = 'index.html'
+    queryset = Recipe.objects.all().order_by("-created_on")
+    template_name = "index.html"
     paginate_by = 6
