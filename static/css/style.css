@@ -1,3 +1,8 @@
+body {
+    background-color: #F5E6E8;
+    color: #272d2d;
+}
+
 .bg-image {
     max-height: 84vh;
     position: relative;
@@ -16,4 +21,59 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.card {
+    border: none;
+    background-color: #F5E6E8;
+    margin-top: 3rem;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-flash {
+    position: absolute;
+    bottom: 5%;
+    min-width: 20%;
+    left: -2px;
+    background-color: #64dfdf;
+}
+
+.author {
+    color: #5d6161;
+    margin: 4px;
+    text-transform: uppercase;
+}
+
+.recipe-link, a i {
+    text-decoration: none;
+    color: #272d2d;
+}
+
+.recipe-link:hover, a i:hover,
+.page-link {
+    color: #5E60DE;
+}
+
+.card-text {
+    color: #5d6161;
+}
+
+.card-text i {
+    color: #5E60DE;
+}
+
+.masthead {
+    margin-top: 3.5rem;
+}
+
+.masthead-text {
+    background-color: #FFFFFF;
+    color: #272d2d;
+}
+
+.recipe-description {
+    color: #5d6161;
 }
