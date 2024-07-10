@@ -1,6 +1,7 @@
 body {
-    background-color: #F5E6E8;
     color: #272d2d;
+    background-color: #FFFFFF;
+    min-height: 85vh;
 }
 
 .bg-image {
@@ -8,9 +9,14 @@ body {
     position: relative;
 }
 
+#homepage-body {
+    background-color: #FFFFFF;
+}
+
 .form-container {
-    max-width: 50vw;
+    max-width: 60vw;
     min-height: 65vh;
+    max-height: 80vh;
     position: absolute;
     top: 45%;
     left: 45%;
@@ -27,10 +33,17 @@ body {
     border: none;
     background-color: #F5E6E8;
     margin-top: 3rem;
+    max-width: 100%;
+    max-height: 85%;
 }
 
 .image-container {
     position: relative;
+}
+
+.recipe-image {
+    object-fit: cover;
+    height: 18rem;
 }
 
 .image-flash {
@@ -57,8 +70,17 @@ body {
     color: #5E60DE;
 }
 
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .card-text {
     color: #5d6161;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .card-text i {
@@ -67,6 +89,7 @@ body {
 
 .masthead {
     margin-top: 3.5rem;
+    max-height: 80vh;
 }
 
 .masthead-text {
@@ -76,4 +99,8 @@ body {
 
 .recipe-description {
     color: #5d6161;
+}
+
+.footer {
+    margin-top: 0;
 }
