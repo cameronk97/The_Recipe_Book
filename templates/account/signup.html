@@ -5,17 +5,30 @@
 {% block head_title %}{% trans "Signup" %}{% endblock head_title %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<div class="bg-image bg-center" style="background-image: url('https://res.cloudinary.com/dksu5snru/image/upload/v1720624334/The%20Recipe%20Book/pexels-alleksana-4113827_1_ojkvxk.jpg'); background-size: cover; background-position: center;">
+    <div class="overlay-container d-flex align-items-center justify-content-center">
+      <div class="container">
+        <div id="signup-form-row" class="row align-items-center justify-content-center vh-100">
+            <div class="col-md-8 offset-md-2">
+              <div class="form-container bg-white p-5 m-5 d-flex flex-column align-items-center shadow rounded">
+                <h1 class="text-center">{% trans "Sign Up" %}</h1>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
+                <p class="text-center">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+                <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  {% if redirect_field_value %}
+                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                  {% endif %}
+                  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
 
 {% endblock content %}
