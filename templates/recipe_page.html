@@ -25,14 +25,19 @@
 </div>
 
 <div class="recipe-content container-fluid">
-    <div class="row">
-      <div class="col-md-6 ingredients">
-  
-      </div>
-      <div class="col-md-6 instructions">
-
-      </div>
+  <div class="row">
+    <div id="ingredients" class="col-md-6">
+      <h2>Ingredients</h2>
+      <ul>
+          {% for ingredient in ingredients %}
+              <li>{{ ingredient }}</li>
+          {% endfor %}
+      </ul>
     </div>
+    <div id="instructions" class="col-md-6">
+
+    </div>
+  </div>
 </div>
 
 {% endblock content %}

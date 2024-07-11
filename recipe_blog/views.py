@@ -13,11 +13,32 @@ def recipe_page(request):
 class RecipePage(View):
 
     def get(self, request, slug, *args, **kwargs):
+            queryset = Recipe.objects.all()
+            recipe = get_object_or_404(queryset, slug=slug)
+            ingredients = recipe.ingredients.splitlines()
+            saved = False
+            if recipe.saves.filter(id=self.request.user.id).exists():
+                saved = True
+
+            return render(
+                request,
+                "recipe_page.html",
+                {
+                    "recipe": recipe,
+                    "saved": saved,
+                    "ingredients": ingredients
+                },
+            )
+    
+    def recipe(self, request, slug, *args, **kwargs):
+
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         saved = False
+        ingredients = [ingredient.strip() for ingredient in ingredients if ingredient.strip()]
         if recipe.saves.filter(id=self.request.user.id).exists():
             saved = True
+
 
         return render(
             request,
@@ -25,24 +46,7 @@ class RecipePage(View):
             {
                 "recipe": recipe,
                 "saved": saved,
-            },
-        )
-    
-    def recipe(self, request, slug, *args, **kwargs):
-
-        queryset = Recipe.objects.all()
-        recipe = get_object_or_404(queryset, slug=slug)
-        saved = False
-        if recipe.saves.filter(id=self.request.user.id).exists():
-            saved = True
-
-
-        return render(
-            request,
-            "recipe_page.html",
-            {
-                "recipe": recipe,
-                "saved": saved
+                "ingredients": ingredients
             },
         )
 
